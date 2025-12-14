@@ -1,17 +1,12 @@
 { ... }:
 {
   imports = [
-    ../../home-modules/shells/fish.nix
+    ../../modules/shells/fish.nix
 
-    ../../home-modules/clis
+    ../../modules/desktop/hyprland
+    ../../modules/programs
 
-    ../../home-modules/desktop-environments/hyprland
-
-    ../../home-modules/applications
-
-    ../../home-modules/languages/flutter.nix
-
-    ../../home-modules/todo.nix
+    ../../modules/todo.nix
   ];
 
   home.username = "matheo";

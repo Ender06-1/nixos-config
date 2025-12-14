@@ -18,11 +18,11 @@
     ../../modules/steam.nix
     ../../modules/adb.nix
 
-    ../../modules/services/pipewire.nix
-    ../../modules/services/udisks2.nix
-    ../../modules/services/gvfs.nix
-    ../../modules/services/power-profiles-daemon.nix
-    ../../modules/services/thermald.nix
+    ../../modules/pipewire.nix
+    ../../modules/udisks2.nix
+    ../../modules/gvfs.nix
+    ../../modules/power-profiles-daemon.nix
+    ../../modules/thermald.nix
 
     ../../modules/hyprland.nix
 

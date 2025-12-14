@@ -22,9 +22,9 @@
     ../../modules/steam.nix
     ../../modules/adb.nix
 
-    ../../modules/services/pipewire.nix
-    ../../modules/services/udisks2.nix
-    ../../modules/services/gvfs.nix
+    ../../modules/pipewire.nix
+    ../../modules/udisks2.nix
+    ../../modules/gvfs.nix
 
     ../../modules/hyprland.nix
 
