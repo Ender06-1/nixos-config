@@ -5,7 +5,6 @@
 
     ./hardware-configuration.nix
 
-    ../../modules/base.nix
     ../../modules/home-manager.nix
     ../../modules/region.nix
     ../../modules/nix.nix
