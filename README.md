@@ -4,4 +4,3 @@
 
 - Hyprland Workspaces
 - Hyprland Layouts
-- Bluetooth

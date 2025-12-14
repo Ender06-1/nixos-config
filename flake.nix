@@ -6,11 +6,6 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,17 +23,12 @@
   };
 
   outputs =
-    inputs@{
+    {
       self,
       nixpkgs,
-      treefmt-nix,
       ...
-    }:
+    }@inputs:
     {
-      formatter."x86_64-linux" =
-        (treefmt-nix.lib.evalModule nixpkgs.legacyPackages."x86_64-linux" ./treefmt.nix)
-        .config.build.wrapper;
-
       nixosConfigurations = {
 
         framework = nixpkgs.lib.nixosSystem {
