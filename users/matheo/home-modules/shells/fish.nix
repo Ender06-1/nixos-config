@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./prompts/starship.nix
+  ];
+
   programs.fish = {
     enable = true;
     generateCompletions = false;
@@ -9,9 +13,6 @@
   };
   programs.bash = {
     enable = true;
-    sessionVariables = {
-      CHROME_EXECUTABLE = "${pkgs.google-chrome}/bin/google-chrome-stable";
-    };
     initExtra = ''
       if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
       then

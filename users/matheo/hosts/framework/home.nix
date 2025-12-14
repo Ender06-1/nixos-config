@@ -2,13 +2,12 @@
 {
   imports = [
     ../../home-modules/shells/fish.nix
-    ../../home-modules/shells/starship.nix
 
-    ../../home-modules/clis/all.nix
+    ../../home-modules/clis
 
     ../../home-modules/desktop-environments/hyprland
 
-    ../../home-modules/applications/all.nix
+    ../../home-modules/applications
 
     ../../home-modules/languages/flutter.nix
 
