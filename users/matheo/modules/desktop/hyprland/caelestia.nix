@@ -19,5 +19,4 @@
 
     hyprcursor.enable = true;
   };
-
 }

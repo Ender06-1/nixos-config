@@ -12,14 +12,13 @@
     hyprsysteminfo
 
     app2unit
+    jq
 
     wl-clipboard
     cliphist
 
     inotify-tools
     libnotify
-
-    nerd-fonts.jetbrains-mono
 
     brightnessctl
     pavucontrol
