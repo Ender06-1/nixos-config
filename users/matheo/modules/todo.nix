@@ -1,8 +1,6 @@
 { inputs, pkgs, ... }:
 {
   home.packages = with pkgs; [
-    clang-tools
-
     fastfetch
     btop
 
@@ -24,9 +22,6 @@
     nautilus
     papers
     vlc
-
-    prismlauncher
-    ftb-app
 
     zip
     unzip
@@ -59,6 +54,5 @@
     libreoffice-fresh
     file-roller
     papers
-    vlc
   ];
 }

@@ -6,17 +6,17 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+
+    extraPackages = with pkgs; [
+      gcc
+      lua
+      luarocks
+      lua-language-server
+      stylua
+
+      nerd-fonts.fira-code
+    ];
   };
-
-  home.packages = with pkgs; [
-    gcc
-    lua
-    luarocks
-    lua-language-server
-    stylua
-
-    nerd-fonts.fira-code
-  ];
 
   xdg = {
     configFile = {
