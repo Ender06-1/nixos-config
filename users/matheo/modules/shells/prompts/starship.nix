@@ -6,5 +6,8 @@
     enableBashIntegration = false;
   };
 
-  xdg.configFile."starship.toml".source = ../../../dotfiles/starship.toml;
+  xdg = {
+    enable = true;
+    configFile."starship.toml".source = ../../../dotfiles/starship.toml;
+  };
 }

@@ -10,21 +10,30 @@
     hyprpicker
     hyprpolkitagent
     hyprsysteminfo
+
+    app2unit
+
     wl-clipboard
     cliphist
+
     inotify-tools
     libnotify
+
     nerd-fonts.jetbrains-mono
+
     brightnessctl
+    pavucontrol
     playerctl
-    adw-gtk3
+
     papirus-icon-theme
+
     kdePackages.qt6ct
     kdePackages.qtsvg
     kdePackages.qtimageformats
     kdePackages.qtmultimedia
     kdePackages.qt5compat
-    pavucontrol
+
     nwg-look
+    adw-gtk3
   ];
 }

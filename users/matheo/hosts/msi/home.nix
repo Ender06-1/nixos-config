@@ -4,6 +4,7 @@
     ../../modules/shells/fish.nix
 
     ../../modules/desktop/hyprland
+    ../../modules/desktop/hyprland/config/msi.nix
     ../../modules/programs
 
     ../../modules/todo.nix

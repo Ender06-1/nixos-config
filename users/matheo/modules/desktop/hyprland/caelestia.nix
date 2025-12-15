@@ -20,13 +20,4 @@
     hyprcursor.enable = true;
   };
 
-  xdg.configFile."caelestia" = {
-    source = ../../../dotfiles/caelestia;
-    recursive = true;
-  };
-
-  home.packages = with pkgs; [
-    app2unit
-    jq
-  ];
 }

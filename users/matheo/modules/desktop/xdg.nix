@@ -1,11 +1,7 @@
 { ... }:
 {
-  xdg = {
+  xdg.userDirs = {
     enable = true;
-    userDirs = {
-      enable = true;
-      createDirectories = true;
-    };
-    mimeApps.enable = true;
+    createDirectories = true;
   };
 }

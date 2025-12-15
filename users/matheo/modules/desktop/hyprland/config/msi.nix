@@ -1,0 +1,18 @@
+{ ... }:
+{
+  programs.caelestia.settings = {
+    general.apps = {
+      terminal = [ "kitty" ];
+      audio = [ "pavucontrol" ];
+      playback = [ "mpv" ];
+      explorer = [ "nautilus" ];
+    };
+    paths.sessionGif = "";
+    services = {
+      useFahrenheit = false;
+      useTwelveHourClock = false;
+    };
+
+    bar.status.showBattery = false;
+  };
+}
