@@ -20,14 +20,14 @@ all: debug
 release: CPPFLAGS += -DNDEBUG
 release: CFLAGS += -O3
 release: $(OBJ)
-	$(CC) -o $@ $^ $(LDFLAGS)
+	$(CC) -o $(BIN) $^ $(LDFLAGS)
 
 
 debug: CFLAGS += -ggdb
 debug: LDFLAGS += -fsanitize=address
 debug: $(OBJ)
-	$(CC) -o $@ $^ $(LDFLAGS)
+	$(CC) -o $(BIN)-debug $^ $(LDFLAGS)
 
 
 clean:
-	$(RM) $(OBJ) $(BIN)
+	$(RM) $(OBJ) $(BIN) $(BIN)-debug
