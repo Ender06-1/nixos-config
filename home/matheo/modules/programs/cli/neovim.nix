@@ -18,11 +18,13 @@
     ];
   };
 
+  fonts.fontconfig.enable = true;
+
   xdg = {
     enable = true;
     configFile = {
       "nvim" = {
-        source = ../../dotfiles/nvim;
+        source = ../../../dotfiles/nvim;
         recursive = true;
       };
     };

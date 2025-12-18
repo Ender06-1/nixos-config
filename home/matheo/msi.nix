@@ -2,11 +2,10 @@
 {
   imports = [
     ./modules/shells/fish.nix
+    ./modules/programs/cli
 
     ./modules/desktop/hyprland/msi.nix
-    ./modules/programs
-
-    ./modules/todo.nix
+    ./modules/programs/gui
   ];
 
   home.username = "matheo";

@@ -24,7 +24,19 @@
 
   outputs =
     { self, nixpkgs, ... }@inputs:
+    let
+      system = "x86_64";
+
+      pkgs = import nixpkgs { inherit system; };
+    in
     {
+      devShells.${system}.default = pkgs.mkShell {
+        name = "dev";
+        packages = with pkgs; [
+          nil
+        ];
+      };
+
       nixosConfigurations = {
 
         framework = nixpkgs.lib.nixosSystem {

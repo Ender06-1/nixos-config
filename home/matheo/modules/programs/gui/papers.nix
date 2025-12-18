@@ -1,12 +1,14 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.vlc ];
+  home.packages = with pkgs; [
+    papers
+  ];
 
   xdg = {
     enable = true;
     mimeApps = {
       enable = true;
-      defaultApplicationPackages = [ pkgs.vlc ];
+      defaultApplicationPackages = [ pkgs.papers ];
     };
   };
 }
