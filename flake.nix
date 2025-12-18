@@ -23,9 +23,14 @@
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      pyback,
+      ...
+    }@inputs:
     let
-      system = "x86_64";
+      system = "x86_64-linux";
 
       pkgs = import nixpkgs { inherit system; };
     in
@@ -38,7 +43,6 @@
       };
 
       nixosConfigurations = {
-
         framework = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [ ./nixos/hosts/framework ];
@@ -58,7 +62,10 @@
           specialArgs = { inherit inputs; };
           modules = [ ./nixos/hosts/fujitsu ];
         };
+      };
 
+      packages.${system} = {
+        pyback = pyback.packages.${system}.default;
       };
     };
 }

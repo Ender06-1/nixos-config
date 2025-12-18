@@ -1,3 +1,3 @@
 # NixOS Config
 
-Personal NixOS config.
+Personal flake.
