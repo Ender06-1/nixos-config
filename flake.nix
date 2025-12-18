@@ -67,5 +67,12 @@
       packages.${system} = {
         pyback = pyback.packages.${system}.default;
       };
+
+      templates = {
+        c = {
+          path = ./templates/c;
+          description = "C project template";
+        };
+      };
     };
 }
