@@ -26,6 +26,9 @@
         recursive = true;
       };
     };
-    mimeApps.defaultApplicationPackages = [ pkgs.neovim ];
+    mimeApps = {
+      enable = true;
+      defaultApplicationPackages = [ pkgs.neovim ];
+    };
   };
 }

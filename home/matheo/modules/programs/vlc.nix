@@ -2,5 +2,11 @@
 {
   home.packages = [ pkgs.vlc ];
 
-  xdg.mimeApps.defaultApplicationPackages = [ pkgs.vlc ];
+  xdg = {
+    enable = true;
+    mimeApps = {
+      enable = true;
+      defaultApplicationPackages = [ pkgs.vlc ];
+    };
+  };
 }

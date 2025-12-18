@@ -1,5 +1,9 @@
 { ... }:
 {
+  imports = [
+    ./hyprland.nix
+  ];
+
   programs.caelestia.settings = {
     general.apps = {
       terminal = [ "kitty" ];
@@ -12,7 +16,5 @@
       useFahrenheit = false;
       useTwelveHourClock = false;
     };
-
-    bar.status.showBattery = false;
   };
 }

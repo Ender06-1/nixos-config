@@ -4,6 +4,9 @@
 
   xdg = {
     enable = true;
-    mimeApps.defaultApplicationPackages = [ pkgs.firefox ];
+    mimeApps = {
+      enable = true;
+      defaultApplicationPackages = [ pkgs.firefox ];
+    };
   };
 }
