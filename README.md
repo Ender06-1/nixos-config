@@ -1,6 +1,3 @@
 # NixOS Config
 
-## TODO
-
-- Hyprland Workspaces
-- Hyprland Layouts
+Personal NixOS config.

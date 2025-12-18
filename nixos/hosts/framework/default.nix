@@ -8,24 +8,14 @@
     ../../modules/home-manager.nix
     ../../modules/region.nix
     ../../modules/nix.nix
-
     ../../modules/bluetooth.nix
-
     ../../modules/networkmanager.nix
-    ../../modules/docker.nix
     ../../modules/ssh.nix
-    ../../modules/steam.nix
-    ../../modules/adb.nix
-
     ../../modules/pipewire.nix
-    ../../modules/udisks2.nix
-    ../../modules/gvfs.nix
     ../../modules/power-profiles-daemon.nix
     ../../modules/thermald.nix
 
-    ../../modules/hyprland.nix
-
-    ../../users/matheo/hosts/framework
+    ../../users/matheo/framework.nix
   ];
 
   networking.hostName = "framework";

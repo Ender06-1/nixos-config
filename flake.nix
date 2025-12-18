@@ -23,27 +23,28 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      ...
-    }@inputs:
+    { self, nixpkgs, ... }@inputs:
     {
       nixosConfigurations = {
 
         framework = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
-          modules = [ ./hosts/framework ];
+          modules = [ ./nixos/hosts/framework ];
         };
 
         msi = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
-          modules = [ ./hosts/msi ];
+          modules = [ ./nixos/hosts/msi ];
         };
 
         thinkpad = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
-          modules = [ ./hosts/thinkpad ];
+          modules = [ ./nixos/hosts/thinkpad ];
+        };
+
+        fujitsu = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [ ./nixos/hosts/fujitsu ];
         };
 
       };
