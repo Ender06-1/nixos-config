@@ -36,7 +36,7 @@
     in
     {
       devShells.${system}.default = pkgs.mkShell {
-        name = "dev";
+        name = "flake-config";
         packages = with pkgs; [
           nil
         ];
