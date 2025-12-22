@@ -22,10 +22,6 @@
 
   networking.hostName = "msi";
 
-  networking.hosts = {
-    "192.168.0.2" = [ "fujitsu" ];
-  };
-
   fileSystems."/mnt/storage" = {
     device = "/dev/disk/by-uuid/13ddf8d8-def6-467f-b487-1958633cf951";
     fsType = "ext4";
