@@ -14,10 +14,33 @@
     ./services/caddy.nix
 
     ./services/pihole.nix
+    # ./services/syncthing.nix
+    ./services/nextcloud.nix
   ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+
+    swraid = {
+      enable = true;
+      mdadmConf = ''
+        MAILADDR ndxendernight@gmail.com
+
+        DEVICE partitions
+        ARRAY /dev/md127 metadata=1.2 UUID=10972912:7dbdf640:0347c360:18fb2100
+      '';
+    };
+
+    tmp.cleanOnBoot = true;
+  };
+
+  fileSystems."/mnt/data" = {
+    device = "/dev/disk/by-uuid/2a99cbd5-b3a6-495e-89d4-ed357b432a89";
+    fsType = "ext4";
+  };
 
   networking.hostName = "fujitsu";
 
@@ -49,20 +72,22 @@
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "us";
 
-  users.users.admin = {
+  users.users."admin" = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [
+      "wheel"
+      "storage"
+    ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGPybOZB+lmPWgxHv5boGPtlMz6QQ8T881/Yzbk/M36z"
     ];
   };
+  users.groups."storage" = { };
 
   environment.systemPackages = with pkgs; [
     neovim
     git
     btop
-
-    inputs.agenix.packages."x86_64-linux".default
   ];
 
   system.stateVersion = "25.11";
