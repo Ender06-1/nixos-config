@@ -16,6 +16,7 @@
     ./services/pihole.nix
     # ./services/syncthing.nix
     ./services/nextcloud.nix
+    ./services/minecraft.nix
   ];
 
   boot = {
@@ -63,9 +64,12 @@
     ];
   };
 
-  nix.settings.trusted-users = [
-    "admin"
-  ];
+  nix.settings = {
+    trusted-users = [
+      "admin"
+    ];
+  };
+  nixpkgs.config.allowUnfree = true;
 
   time.timeZone = "Europe/Paris";
 
