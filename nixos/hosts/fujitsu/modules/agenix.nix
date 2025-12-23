@@ -1,7 +1,7 @@
 { ... }:
 {
   age.secrets = {
-    ts-authkey.file = ../secrets/ts-authkey.age;
+    caddy.file = ../secrets/caddy.age;
     pihole.file = ../secrets/pihole.age;
   };
 }
