@@ -1,11 +1,19 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
 
+    inputs.agenix.nixosModules.default
+    ./modules/agenix.nix
+
+    ./modules/docker.nix
+
     ./services/ssh.nix
     ./services/tailscale.nix
+    ./services/caddy.nix
+
+    ./services/pihole.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -53,6 +61,8 @@
     neovim
     git
     btop
+
+    inputs.agenix.packages."x86_64-linux".default
   ];
 
   system.stateVersion = "25.11";

@@ -43,6 +43,9 @@
   hardware.graphics.enable = true;
 
   services.tailscale.enable = true;
+  environment.systemPackages = [
+    inputs.agenix.packages."x86_64-linux".default
+  ];
 
   system.stateVersion = "25.05";
 }
