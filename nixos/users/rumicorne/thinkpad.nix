@@ -7,5 +7,5 @@
     isNormalUser = true;
   };
 
-  home-manager.users.matheo = ../../../home/rumicorne/thinkpad.nix;
+  home-manager.users.rumicorne = ../../../home/rumicorne/thinkpad.nix;
 }
