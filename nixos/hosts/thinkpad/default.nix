@@ -6,7 +6,7 @@
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-gpu-intel
 
-    inputs.nixos-hardware.nixosModules.common-laptop-ssd
+    inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
 
     ./hardware-configuration.nix
 
