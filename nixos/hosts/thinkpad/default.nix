@@ -40,7 +40,7 @@
   };
 
   console.keyMap = "fr";
-  i18n.supportedLocales = [
+  i18n.extraLocales = [
     "en_US.UTF-8"
     "fr_FR.UTF-8"
   ];
