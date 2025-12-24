@@ -40,11 +40,10 @@
   };
 
   console.keyMap = "fr";
-  time.timeZone = "Europe/Paris";
-  i18n = {
-    defaultLocale = "fr_FR.UTF-8";
-    supportedLocales = [ "all" ];
-  };
+  i18n.supportedLocales = [
+    "en_US.UTF-8"
+    "fr_FR.UTF-8"
+  ];
 
   hardware = {
     graphics.enable = true;
