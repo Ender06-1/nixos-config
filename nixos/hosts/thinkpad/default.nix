@@ -11,7 +11,6 @@
     ./hardware-configuration.nix
 
     ../../modules/home-manager.nix
-    ../../modules/region.nix
     ../../modules/nix.nix
     ../../modules/bluetooth.nix
     ../../modules/networkmanager.nix
@@ -40,9 +39,8 @@
   };
 
   console.keyMap = "fr";
-  i18n.extraLocales = [
-    "fr_FR.UTF-8/UTF-8"
-  ];
+  time.timeZone = "Europe/Paris";
+  i18n.defaultLocale = "fr_FR.UTF-8";
 
   hardware = {
     graphics.enable = true;
