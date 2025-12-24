@@ -23,6 +23,7 @@
     ../../modules/kde.nix
 
     ../../users/matheo/thinkpad.nix
+    ../../users/rumicorne/thinkpad.nix
   ];
 
   networking.hostName = "thinkpad";
