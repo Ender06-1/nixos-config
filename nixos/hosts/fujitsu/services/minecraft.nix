@@ -1,6 +1,6 @@
 { ... }:
 {
-  virtualisation.oci-containers.containers."minecraft-1.21.10" = {
+  virtualisation.oci-containers.containers."minecraft-1.21.11" = {
     autoStart = false;
 
     image = "itzg/minecraft-server";
