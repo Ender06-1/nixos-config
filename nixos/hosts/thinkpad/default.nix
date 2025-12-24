@@ -4,7 +4,6 @@
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad
 
     inputs.nixos-hardware.nixosModules.common-cpu-intel
-    inputs.nixos-hardware.nixosModules.common-cpu-intel-kaby-lake
     inputs.nixos-hardware.nixosModules.common-gpu-intel
 
     inputs.nixos-hardware.nixosModules.common-laptop-ssd
