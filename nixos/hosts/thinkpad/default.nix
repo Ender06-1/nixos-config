@@ -40,8 +40,8 @@
 
   console.keyMap = "fr";
 
-  hardware.graphics = {
-    enable = true;
+  hardware = {
+    graphics.enable = true;
     intel-gpu-tools.enable = true;
   };
 
