@@ -14,7 +14,6 @@
       "wheel"
       "docker"
       "kvm"
-      "adbusers"
       "libvirtd"
     ];
   };

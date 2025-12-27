@@ -1,5 +1,4 @@
 { inputs, pkgs, ... }:
-
 {
   imports = [
     ./hardware-configuration.nix
@@ -13,9 +12,6 @@
     ./services/caddy.nix
 
     ./modules/docker.nix
-    ./services/dockge.nix
-
-    ./services/pihole.nix
   ];
 
   boot = {
@@ -23,7 +19,6 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-
     swraid = {
       enable = true;
       mdadmConf = ''
@@ -33,18 +28,16 @@
         ARRAY /dev/md127 metadata=1.2 UUID=10972912:7dbdf640:0347c360:18fb2100
       '';
     };
-
     tmp.cleanOnBoot = true;
   };
 
-  fileSystems."/mnt/data" = {
+  fileSystems."/mnt/storage" = {
     device = "/dev/disk/by-uuid/2a99cbd5-b3a6-495e-89d4-ed357b432a89";
     fsType = "ext4";
   };
 
-  networking.hostName = "fujitsu";
-
   networking = {
+    hostName = "fujitsu";
     interfaces.enp2s0 = {
       ipv4.addresses = [
         {
@@ -63,34 +56,29 @@
     ];
   };
 
-  nix.settings = {
-    trusted-users = [
-      "admin"
-    ];
-  };
+  nix.settings.trusted-users = [
+    "admin"
+  ];
   nixpkgs.config.allowUnfree = true;
 
   time.timeZone = "Europe/Paris";
-
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "us";
 
+  security.polkit.enable = true;
   users.users."admin" = {
     isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "storage"
-    ];
+    extraGroups = [ "wheel" ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGPybOZB+lmPWgxHv5boGPtlMz6QQ8T881/Yzbk/M36z"
     ];
   };
-  users.groups."storage" = { };
 
   environment.systemPackages = with pkgs; [
     neovim
     git
     btop
+    tree
   ];
 
   system.stateVersion = "25.11";
