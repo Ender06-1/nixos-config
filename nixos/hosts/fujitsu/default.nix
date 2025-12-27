@@ -4,19 +4,18 @@
   imports = [
     ./hardware-configuration.nix
 
+    ./services/ssh.nix
+
     inputs.agenix.nixosModules.default
     ./modules/agenix.nix
 
-    ./modules/docker.nix
-
-    ./services/ssh.nix
     ./services/tailscale.nix
     ./services/caddy.nix
 
+    ./modules/docker.nix
+    ./services/dockge.nix
+
     ./services/pihole.nix
-    # ./services/syncthing.nix
-    ./services/nextcloud.nix
-    ./services/minecraft.nix
   ];
 
   boot = {
