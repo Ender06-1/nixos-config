@@ -1,12 +1,12 @@
 { ... }:
 let
+  container_name = "dockge";
   hostname = "dockge.tailb1bb3f.ts.net";
   stacks_path = "/var/lib/dockge/stacks";
 in
 {
-  virtualisation.oci-containers.containers."dockge" = {
+  virtualisation.oci-containers.containers.${container_name} = {
     autoStart = true;
-    user = "admin:users";
 
     image = "louislam/dockge:1";
 
@@ -24,10 +24,6 @@ in
       DOCKGE_STACKS_DIR = stacks_path;
     };
   };
-
-  # systemd.tmpfiles.rules = [
-  #   "d /var/lib/dockge/stacks 0755 admin users -"
-  # ];
 
   services.caddy.virtualHosts.${hostname}.extraConfig = ''
     bind tailscale/dockge

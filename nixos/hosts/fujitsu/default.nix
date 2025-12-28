@@ -12,6 +12,9 @@
     ./services/caddy.nix
 
     ./modules/docker.nix
+    ./services/dockge.nix
+
+    ./services/homepage.nix
   ];
 
   boot = {
