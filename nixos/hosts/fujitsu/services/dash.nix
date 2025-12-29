@@ -1,11 +1,11 @@
 { ... }:
 let
-  hostname = "homepage.tailb1bb3f.ts.net";
+  hostname = "dash.tailb1bb3f.ts.net";
 in
 {
   services.caddy.virtualHosts.${hostname}.extraConfig = ''
-    bind tailscale/homepage
+    bind tailscale/dash
     tailscale_auth
-    reverse_proxy 127.0.0.1:8001
+    reverse_proxy 127.0.0.1:8004
   '';
 }

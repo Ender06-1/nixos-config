@@ -11,10 +11,13 @@
     ./services/tailscale.nix
     ./services/caddy.nix
 
-    ./modules/docker.nix
+    ./modules/podman.nix
     ./services/dockge.nix
 
-    ./services/homepage.nix
+    ./services/homarr.nix
+    ./services/filebrowser.nix
+    ./services/pihole.nix
+    ./services/dash.nix
   ];
 
   boot = {
@@ -38,6 +41,9 @@
     device = "/dev/disk/by-uuid/2a99cbd5-b3a6-495e-89d4-ed357b432a89";
     fsType = "ext4";
   };
+  systemd.tmpfiles.rules = [
+    "d /mnt/storage 2770 admin storage -"
+  ];
 
   networking = {
     hostName = "fujitsu";
@@ -68,13 +74,18 @@
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "us";
 
-  security.polkit.enable = true;
-  users.users."admin" = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGPybOZB+lmPWgxHv5boGPtlMz6QQ8T881/Yzbk/M36z"
-    ];
+  users = {
+    users."admin" = {
+      isNormalUser = true;
+      extraGroups = [
+        "wheel"
+        "storage"
+      ];
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGPybOZB+lmPWgxHv5boGPtlMz6QQ8T881/Yzbk/M36z"
+      ];
+    };
+    groups."storage" = { };
   };
 
   environment.systemPackages = with pkgs; [
