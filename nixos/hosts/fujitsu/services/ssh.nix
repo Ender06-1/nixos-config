@@ -6,10 +6,7 @@
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
       PermitRootLogin = "no";
-      AllowUsers = [
-        "admin"
-        "service-runner"
-      ];
+      AllowUsers = [ "admin" ];
     };
   };
 }

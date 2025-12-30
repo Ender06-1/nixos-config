@@ -11,13 +11,14 @@
     ./services/tailscale.nix
     ./services/caddy.nix
 
-    ./modules/podman.nix
-    ./services/dockge.nix
+    ./modules/docker.nix
 
+    ./services/dockge.nix
     ./services/homarr.nix
     ./services/filebrowser.nix
     ./services/pihole.nix
     ./services/dash.nix
+    ./services/immich.nix
   ];
 
   boot = {
@@ -41,9 +42,6 @@
     device = "/dev/disk/by-uuid/2a99cbd5-b3a6-495e-89d4-ed357b432a89";
     fsType = "ext4";
   };
-  systemd.tmpfiles.rules = [
-    "d /mnt/storage 2770 admin storage -"
-  ];
 
   networking = {
     hostName = "fujitsu";
@@ -65,27 +63,20 @@
     ];
   };
 
-  nix.settings.trusted-users = [
-    "admin"
-  ];
+  nix.settings.trusted-users = [ "admin" ];
   nixpkgs.config.allowUnfree = true;
 
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "us";
 
-  users = {
-    users."admin" = {
-      isNormalUser = true;
-      extraGroups = [
-        "wheel"
-        "storage"
-      ];
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGPybOZB+lmPWgxHv5boGPtlMz6QQ8T881/Yzbk/M36z"
-      ];
-    };
-    groups."storage" = { };
+  users.users."admin" = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGPybOZB+lmPWgxHv5boGPtlMz6QQ8T881/Yzbk/M36z"
+    ];
   };
 
   environment.systemPackages = with pkgs; [
@@ -93,6 +84,7 @@
     git
     btop
     tree
+    wget
   ];
 
   system.stateVersion = "25.11";
