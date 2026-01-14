@@ -7,7 +7,6 @@
     ./distrobox.nix
     ./eza.nix
     ./fastfetch.nix
-    ./flatpak.nix
     ./git.nix
     ./neovim.nix
     ./pyback.nix
