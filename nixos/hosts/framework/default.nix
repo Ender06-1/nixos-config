@@ -14,6 +14,7 @@
     ../../modules/pipewire.nix
     ../../modules/power-profiles-daemon.nix
     ../../modules/thermald.nix
+    ../../modules/flatpak.nix
 
     ../../users/matheo/framework.nix
   ];
