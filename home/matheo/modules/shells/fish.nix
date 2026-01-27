@@ -4,13 +4,22 @@
     ./prompts/starship.nix
   ];
 
+  home.packages = with pkgs; [
+    fzf
+  ];
+
   programs.fish = {
     enable = true;
     generateCompletions = false;
     interactiveShellInit = ''
       set fish_greeting
     '';
+
+    shellAliases = {
+      nvimf = "nvim (fzf)";
+    };
   };
+
   programs.bash = {
     enable = true;
     initExtra = ''
