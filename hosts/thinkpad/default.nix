@@ -96,12 +96,12 @@
       "wheel"
     ];
   };
-  home-manager.users.matheo = ../../home/matheo/thinkpad.nix;
+  home-manager.users.matheo = ./matheo.nix;
 
   users.users.rumicorne = {
     isNormalUser = true;
   };
-  home-manager.users.rumicorne = ../../home/rumicorne/thinkpad.nix;
+  home-manager.users.rumicorne = ./rumicorne.nix;
 
   system.stateVersion = "25.11";
 }

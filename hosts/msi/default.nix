@@ -94,7 +94,7 @@
     ];
   };
 
-  home-manager.users.matheo = ../../home/matheo/msi.nix;
+  home-manager.users.matheo = ./home.nix;
 
   virtualisation.docker = {
     enable = true;
