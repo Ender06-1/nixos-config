@@ -151,7 +151,7 @@
         defaultBranch = "main";
       };
       user = {
-        name = "Ender";
+        name = "Mathéba";
         email = "ndxendernight@gmail.com";
       };
     };
