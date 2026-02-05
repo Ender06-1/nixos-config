@@ -36,7 +36,7 @@
     in
     {
       devShells.${system}.default = pkgs.mkShell {
-        name = "flake-config";
+        name = "nix-flake";
         packages = with pkgs; [
           nil
         ];
@@ -45,31 +45,22 @@
       nixosConfigurations = {
         framework = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
-          modules = [ ./nixos/hosts/framework ];
+          modules = [ ./hosts/framework ];
         };
 
         msi = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
-          modules = [ ./nixos/hosts/msi ];
+          modules = [ ./hosts/msi ];
         };
 
         thinkpad = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
-          modules = [ ./nixos/hosts/thinkpad ];
+          modules = [ ./hosts/thinkpad ];
         };
 
         fujitsu = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
-          modules = [ ./nixos/hosts/fujitsu ];
-        };
-      };
-
-      packages.${system} = { };
-
-      templates = {
-        c = {
-          path = ./templates/c;
-          description = "C project template";
+          modules = [ ./hosts/fujitsu ];
         };
       };
     };
