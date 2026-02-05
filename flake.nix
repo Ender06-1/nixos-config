@@ -21,18 +21,12 @@
       url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    pyback = {
-      url = "github:EnderNight/pyback";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      pyback,
       ...
     }@inputs:
     let
@@ -70,9 +64,7 @@
         };
       };
 
-      packages.${system} = {
-        pyback = pyback.packages.${system}.default;
-      };
+      packages.${system} = { };
 
       templates = {
         c = {

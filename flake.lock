@@ -141,48 +141,6 @@
         "type": "github"
       }
     },
-    "pyback": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "pyproject-nix": "pyproject-nix"
-      },
-      "locked": {
-        "lastModified": 1763152818,
-        "narHash": "sha256-b+FvVNS4OTVxd/VyoTO2BwIJ1EEEq6V4gQ0bjUvl5cY=",
-        "owner": "EnderNight",
-        "repo": "pyback",
-        "rev": "d7d56627e510b9974395bd271489ce717f124094",
-        "type": "github"
-      },
-      "original": {
-        "owner": "EnderNight",
-        "repo": "pyback",
-        "type": "github"
-      }
-    },
-    "pyproject-nix": {
-      "inputs": {
-        "nixpkgs": [
-          "pyback",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1763017646,
-        "narHash": "sha256-Z+R2lveIp6Skn1VPH3taQIuMhABg1IizJd8oVdmdHsQ=",
-        "owner": "pyproject-nix",
-        "repo": "pyproject.nix",
-        "rev": "47bd6f296502842643078d66128f7b5e5370790c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "pyproject-nix",
-        "repo": "pyproject.nix",
-        "type": "github"
-      }
-    },
     "quickshell": {
       "inputs": {
         "nixpkgs": [
@@ -210,8 +168,7 @@
         "caelestia-shell": "caelestia-shell",
         "home-manager": "home-manager_2",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs",
-        "pyback": "pyback"
+        "nixpkgs": "nixpkgs"
       }
     },
     "systems": {

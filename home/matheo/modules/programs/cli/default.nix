@@ -9,7 +9,6 @@
     ./fastfetch.nix
     ./git.nix
     ./neovim.nix
-    ./pyback.nix
     ./tmux.nix
     ./wget.nix
     ./yazi.nix
