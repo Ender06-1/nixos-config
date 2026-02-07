@@ -9,6 +9,8 @@ Personal flake.
 ### Home Manager
 
 - `browser`: firefox, chrome and mimeapps.list
+- `neovim`: neovim with its config
+- `shell`: fish shell with its config
 
 ## TODO
 

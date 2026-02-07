@@ -145,6 +145,7 @@
 
             browser
             neovim
+            shell
           ];
 
           home.username = "matheo";
@@ -202,18 +203,6 @@
             noto-fonts-color-emoji
             nerd-fonts.jetbrains-mono
           ];
-
-          programs.fish = {
-            enable = true;
-            generateCompletions = false;
-            interactiveShellInit = ''
-              set fish_greeting
-            '';
-
-            shellAliases = {
-              nvimf = "nvim (fzf)";
-            };
-          };
 
           programs.bash = {
             enable = true;
@@ -335,14 +324,6 @@
               createDirectories = true;
             };
             configFile = {
-              "fish/conf.d" = {
-                source = ./dotfiles/fish/conf.d;
-                recursive = true;
-              };
-              "fish/functions" = {
-                source = ./dotfiles/fish/functions;
-                recursive = true;
-              };
               "starship.toml".source = ./dotfiles/starship.toml;
               "hypr" = {
                 source = ./dotfiles/hypr;
