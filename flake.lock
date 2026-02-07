@@ -180,8 +180,21 @@
         "nixpkgs-lib": [
           "nixpkgs"
         ],
+        "shells": "shells",
         "systems": "systems"
       }
+    },
+    "shells": {
+      "flake": false,
+      "locked": {
+        "path": "./shells",
+        "type": "path"
+      },
+      "original": {
+        "path": "./shells",
+        "type": "path"
+      },
+      "parent": []
     },
     "systems": {
       "locked": {

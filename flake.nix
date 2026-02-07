@@ -22,6 +22,10 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-lib.follows = "nixpkgs";
+    shells = {
+      flake = false;
+      url = "path:./shells";
+    };
     systems.url = "github:nix-systems/default";
   };
 
