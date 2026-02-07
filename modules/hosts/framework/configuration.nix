@@ -1,10 +1,11 @@
 { inputs, ... }:
 {
   flake.modules.nixos.framework = { lib, config, pkgs, modulesPath, ... }: {
-    imports = [
-      inputs.nixos-hardware.nixosModules.framework-13th-gen-intel
-      inputs.home-manager.nixosModules.home-manager
+    imports = with inputs; [
       (modulesPath + "/installer/scan/not-detected.nix")
+
+      nixos-hardware.nixosModules.framework-13th-gen-intel
+      home-manager.nixosModules.home-manager
     ];
 
     boot.initrd.availableKernelModules = [
@@ -129,8 +130,10 @@
     };
 
     home-manager.users.matheo = { pkgs, ... }: {
-      imports = [
-        inputs.caelestia-shell.homeManagerModules.default
+      imports = with inputs; [
+        caelestia-shell.homeManagerModules.default
+
+        self.modules.homeManager.browser
       ];
 
       home.username = "matheo";
@@ -159,7 +162,6 @@
         bitwarden-desktop
         discord
         file-roller
-        google-chrome
         libreoffice-fresh
         loupe
         jdk25_headless
@@ -310,8 +312,6 @@
 
       programs.yazi.enable = true;
 
-      programs.firefox.enable = true;
-
       programs.kitty = {
         enable = true;
         themeFile = "OneDark-Pro";
@@ -366,7 +366,6 @@
           enable = true;
           defaultApplicationPackages = with pkgs; [
             neovim
-            firefox
             file-roller
             libreoffice-fresh
             vlc
