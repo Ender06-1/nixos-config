@@ -9,12 +9,18 @@
       ...
     }:
     {
-      imports = with inputs; [
-        (modulesPath + "/installer/scan/not-detected.nix")
+      imports =
+        with inputs;
+        with inputs.self.modules.nixos;
+        [
+          (modulesPath + "/installer/scan/not-detected.nix")
 
-        nixos-hardware.nixosModules.framework-13th-gen-intel
-        home-manager.nixosModules.home-manager
-      ];
+          nixos-hardware.nixosModules.framework-13th-gen-intel
+          home-manager.nixosModules.home-manager
+
+          hyprland
+          desktop-apps
+        ];
 
       boot.initrd.availableKernelModules = [
         "xhci_pci"
@@ -78,12 +84,6 @@
         intel-gpu-tools.enable = true;
       };
 
-      home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        backupFileExtension = "backup";
-      };
-
       time.timeZone = "Europe/Paris";
       i18n.defaultLocale = "en_US.UTF-8";
 
@@ -115,16 +115,6 @@
         '';
       };
 
-      services.pipewire = {
-        enable = true;
-        pulse.enable = true;
-      };
-
-      services = {
-        power-profiles-daemon.enable = true;
-        thermald.enable = true;
-      };
-
       services.flatpak.enable = true;
 
       users.users.matheo = {
@@ -154,125 +144,29 @@
           home.homeDirectory = "/home/matheo";
 
           home.packages = with pkgs; [
-            poppler
-            bitwarden-desktop
-            discord
-            file-roller
-            libreoffice-fresh
-            loupe
             jdk25_headless
             prismlauncher
             ftb-app
-            nautilus
-            papers
-            vlc
-            hyprpaper
-            hyprpicker
-            hyprpolkitagent
-            hyprsysteminfo
-            app2unit
-            cliphist
-            inotify-tools
-            libnotify
-            brightnessctl
-            pavucontrol
-            playerctl
-            papirus-icon-theme
-            kdePackages.qt6ct
-            kdePackages.qtsvg
-            kdePackages.qtimageformats
-            kdePackages.qtmultimedia
-            kdePackages.qt5compat
-            nwg-look
-            adw-gtk3
-            noto-fonts
-            noto-fonts-cjk-sans
-            noto-fonts-color-emoji
-            nerd-fonts.jetbrains-mono
-            nerd-fonts.fira-code
           ];
-
-          programs.caelestia = {
-            enable = true;
-            systemd.enable = false;
-
-            cli.enable = true;
-            settings = {
-              general.apps = {
-                terminal = [ "kitty" ];
-                audio = [ "pavucontrol" ];
-                playback = [ "mpv" ];
-                explorer = [ "nautilus" ];
-              };
-              paths.sessionGif = "";
-              services = {
-                useFahrenheit = false;
-                useTwelveHourClock = false;
-              };
-            };
-          };
-
-          programs.kitty = {
-            enable = true;
-            themeFile = "OneDark-Pro";
-            font.name = "FiraCode Nerd Font";
-          };
-
-          programs.obs-studio.enable = true;
-
-          programs.vscode.enable = true;
-
-          home.pointerCursor = {
-            enable = true;
-            package = pkgs.bibata-cursors;
-            name = "Bibata-Modern-Ice";
-            size = 24;
-
-            hyprcursor.enable = true;
-          };
-
-          fonts.fontconfig.enable = true;
-
-          xdg = {
-            enable = true;
-            userDirs = {
-              enable = true;
-              createDirectories = true;
-            };
-            configFile."hypr" = {
-              source = ./dotfiles/hypr;
-              recursive = true;
-            };
-            mimeApps = {
-              enable = true;
-              defaultApplicationPackages = with pkgs; [
-                file-roller
-                libreoffice-fresh
-                vlc
-                papers
-                loupe
-              ];
-            };
-          };
 
           home.stateVersion = "25.05";
         };
+
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        backupFileExtension = "backup";
+      };
 
       virtualisation.docker = {
         enable = true;
         enableOnBoot = false;
       };
 
-      programs.steam.enable = true;
-
       services = {
         udisks2.enable = true;
         gvfs.enable = true;
       };
-
-      programs.hyprland.enable = true;
-      environment.sessionVariables.NIXOS_OZONE_WL = "1";
-      services.displayManager.ly.enable = true;
 
       system.stateVersion = "25.05";
     };
