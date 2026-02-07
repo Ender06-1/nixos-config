@@ -11,6 +11,8 @@ Personal flake.
 - `browser`: firefox, chrome and mimeapps.list
 - `neovim`: neovim with its config
 - `shell`: fish shell with its config
+- `cli-tools`: collection of cli tools
+- `tmux`: tmux with its config
 
 ## TODO
 

@@ -146,28 +146,15 @@
             browser
             neovim
             shell
+            cli-tools
+            tmux
           ];
 
           home.username = "matheo";
           home.homeDirectory = "/home/matheo";
 
           home.packages = with pkgs; [
-            fzf
-            btop
-            fastfetch
-            wget
-            file
-            nerd-fonts.fira-code
-            ffmpeg
-            p7zip
-            jq
             poppler
-            zoxide
-            resvg
-            imagemagick
-            wl-clipboard
-            unzip
-            zip
             bitwarden-desktop
             discord
             file-roller
@@ -202,24 +189,8 @@
             noto-fonts-cjk-sans
             noto-fonts-color-emoji
             nerd-fonts.jetbrains-mono
+            nerd-fonts.fira-code
           ];
-
-          programs.bash = {
-            enable = true;
-            initExtra = ''
-              if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-              then
-                shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-                exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-              fi
-            '';
-          };
-
-          programs.starship = {
-            enable = true;
-            enableTransience = true;
-            enableBashIntegration = false;
-          };
 
           programs.caelestia = {
             enable = true;
@@ -241,57 +212,6 @@
             };
           };
 
-          programs.bat.enable = true;
-
-          programs.direnv = {
-            enable = true;
-            nix-direnv.enable = true;
-          };
-
-          programs.eza = {
-            enable = true;
-            colors = "always";
-            icons = "always";
-            extraOptions = [
-              "--hyperlink"
-              "--group-directories-first"
-              "--smart-group"
-              "--header"
-            ];
-          };
-
-          programs.git = {
-            enable = true;
-            settings = {
-              init = {
-                defaultBranch = "main";
-              };
-              user = {
-                name = "Mathéba";
-                email = "ndxendernight@gmail.com";
-              };
-            };
-          };
-
-          programs.tmux = {
-            enable = true;
-
-            clock24 = true;
-            mouse = true;
-            resizeAmount = 10;
-            shortcut = "s";
-            keyMode = "vi";
-            escapeTime = 300;
-            focusEvents = true;
-            terminal = "tmux-256color";
-
-            plugins = with pkgs.tmuxPlugins; [
-              onedark-theme
-            ];
-          };
-
-          programs.yazi.enable = true;
-
           programs.kitty = {
             enable = true;
             themeFile = "OneDark-Pro";
@@ -301,10 +221,6 @@
           programs.obs-studio.enable = true;
 
           programs.vscode.enable = true;
-
-          programs.distrobox.enable = true;
-
-          programs.zoxide.enable = true;
 
           home.pointerCursor = {
             enable = true;
@@ -323,12 +239,9 @@
               enable = true;
               createDirectories = true;
             };
-            configFile = {
-              "starship.toml".source = ./dotfiles/starship.toml;
-              "hypr" = {
-                source = ./dotfiles/hypr;
-                recursive = true;
-              };
+            configFile."hypr" = {
+              source = ./dotfiles/hypr;
+              recursive = true;
             };
             mimeApps = {
               enable = true;
