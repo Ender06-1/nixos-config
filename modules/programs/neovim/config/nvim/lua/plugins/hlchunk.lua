@@ -7,7 +7,10 @@ return {
         enable = true,
         duration = 100,
         delay = 50,
-        style = '#ca80d9',
+        style = {
+          '#be68d8',
+          '#c21f30',
+        },
       },
     }
   end,
