@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.framework =
+  flake.modules.nixos.msi =
     {
       lib,
       config,
@@ -15,32 +15,37 @@
         [
           (modulesPath + "/installer/scan/not-detected.nix")
 
-          nixos-hardware.nixosModules.framework-13th-gen-intel
+          nixos-hardware.nixosModules.common-cpu-amd
+          nixos-hardware.nixosModules.common-cpu-amd-zenpower
+          nixos-hardware.nixosModules.common-gpu-amd
+          nixos-hardware.nixosModules.common-pc
+          nixos-hardware.nixosModules.common-pc-ssd
+
           home-manager.nixosModules.home-manager
 
-          hyprland-laptop
+          hyprland
           desktop-apps
         ];
 
       boot.initrd.availableKernelModules = [
-        "xhci_pci"
-        "thunderbolt"
         "nvme"
-        "usb_storage"
+        "xhci_pci"
+        "ahci"
         "usbhid"
+        "usb_storage"
         "sd_mod"
       ];
       boot.initrd.kernelModules = [ ];
-      boot.kernelModules = [ "kvm-intel" ];
+      boot.kernelModules = [ "kvm-amd" ];
       boot.extraModulePackages = [ ];
 
       fileSystems."/" = {
-        device = "/dev/disk/by-uuid/87f36fab-3d52-434f-af4c-ed9f30569981";
+        device = "/dev/disk/by-uuid/1320bab0-857c-411a-aede-51d8b375d030";
         fsType = "ext4";
       };
 
       fileSystems."/boot" = {
-        device = "/dev/disk/by-uuid/E6FF-1223";
+        device = "/dev/disk/by-uuid/9F9E-2BC7";
         fsType = "vfat";
         options = [
           "fmask=0077"
@@ -48,17 +53,22 @@
         ];
       };
 
+      fileSystems."/mnt/storage" = {
+        device = "/dev/disk/by-uuid/13ddf8d8-def6-467f-b487-1958633cf951";
+        fsType = "ext4";
+      };
+
       swapDevices = [
-        { device = "/dev/disk/by-uuid/f1b2f53b-bb38-4073-b750-6fa555de0c64"; }
+        { device = "/dev/disk/by-uuid/89779217-c066-4c32-99cc-8928b72ba95f"; }
       ];
 
       networking.useDHCP = lib.mkDefault true;
 
       nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-      hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+      hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
       networking = {
-        hostName = "framework";
+        hostName = "msi";
         networkmanager.enable = true;
       };
 
@@ -75,17 +85,15 @@
 
       console.keyMap = "us";
 
-      services.logind.settings.Login = {
-        HandlePowerKey = "suspend";
-      };
-
-      hardware = {
-        graphics.enable = true;
-        intel-gpu-tools.enable = true;
-      };
+      hardware.graphics.enable = true;
 
       time.timeZone = "Europe/Paris";
       i18n.defaultLocale = "en_US.UTF-8";
+
+      services.tailscale.enable = true;
+      environment.systemPackages = [
+        inputs.agenix.packages."x86_64-linux".default
+      ];
 
       nix = {
         settings.experimental-features = [

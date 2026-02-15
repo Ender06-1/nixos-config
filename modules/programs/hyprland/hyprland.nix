@@ -14,10 +14,6 @@
       pulse.enable = true;
     };
 
-    services = {
-      power-profiles-daemon.enable = true;
-      thermald.enable = true;
-    };
   };
 
   flake.modules.homeManager.hyprland =
@@ -40,6 +36,7 @@
             useFahrenheit = false;
             useTwelveHourClock = false;
           };
+          bar.status.showBattery = false;
         };
       };
 
