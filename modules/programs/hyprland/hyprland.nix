@@ -17,7 +17,7 @@
   };
 
   flake.modules.homeManager.hyprland =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     {
       programs.caelestia = {
         enable = true;
@@ -36,7 +36,7 @@
             useFahrenheit = false;
             useTwelveHourClock = false;
           };
-          bar.status.showBattery = false;
+          bar.status.showBattery = lib.mkDefault false;
         };
       };
 

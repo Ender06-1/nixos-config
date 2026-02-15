@@ -1,8 +1,12 @@
 { inputs, ... }:
 {
   flake.modules.nixos.hyprland-laptop = {
-    imports = [
-      inputs.self.modules.nixos.hyprland
+    imports = with inputs; [
+      self.modules.nixos.hyprland
+    ];
+
+    home-manager.sharedModules = with inputs; [
+      self.modules.homeManager.hyprland-laptop
     ];
 
     services = {
@@ -12,11 +16,11 @@
   };
 
   flake.modules.homeManager.hyprland-laptop =
-    { ... }:
+    { lib, ... }:
     {
       programs.caelestia = {
         settings = {
-          bar.status.showBattery = false;
+          bar.status.showBattery = lib.mkForce true;
         };
       };
     };
